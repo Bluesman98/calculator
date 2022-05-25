@@ -11,24 +11,35 @@ let proceed=0;
 
 const del = document.querySelector('.delete');
 del.addEventListener('click',e =>{
-    disp.textContent = disp.textContent.slice(0, -1);
+    let string = disp.textContent.trim();
+    if (isDigit(string[string.length-1])===true) {
+        disp.textContent = disp.textContent.slice(0, -3);
+    } 
+    else  disp.textContent = disp.textContent.slice(0, -1);  
+    
 })
 
-
+let matrix;
 btn.addEventListener('click',e =>{
     lastChar = e.target.textContent;
-    
-    if (isDigit(lastChar) === true ){
-        proceed++;
-        if(proceed==2){
+     
+    if (isDigit(lastChar) == true){
+        matrix = disp.textContent.split(' ');
+        if(matrix.length == 3){
             console.log(disp.textContent);
-            let x = doMath(disp.textContent);
-            disp.textContent = x;
-            proceed = 0;  
+            if (lastChar == '=') {
+                disp.textContent = doMath(disp.textContent)
+            }
+            else {
+                disp.textContent = doMath(disp.textContent) + ' ' + lastChar + ' ';
+            }
+            
         }
         else disp.textContent +=' ' + e.target.textContent + ' ';
+        
     }
     else disp.textContent += e.target.textContent;
+    
 });
 
 function isDigit(c) {
