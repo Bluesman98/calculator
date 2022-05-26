@@ -3,6 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(77, 77, 77);
 }
 .calculator{
     display: flex;
@@ -11,7 +12,7 @@ body {
     width: 300px;
     padding: 10px;
     border-style: solid;
-    border-width: thin;
+    border-width: 3px;
     gap: 10px;
     justify-content: center;
     border-radius: 4px;
@@ -27,6 +28,8 @@ body {
     font-size: 25px;
     align-items: center;
     justify-content: flex-end;
+    white-space: pre-line;
+    overflow:hidden;
     
 }
 .numbers{
