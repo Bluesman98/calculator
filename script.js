@@ -7,12 +7,11 @@ clear.addEventListener('click',e =>{
 })
 
 let lastChar;
-let proceed=0;
 
 const del = document.querySelector('.delete');
 del.addEventListener('click',e =>{
     let string = disp.textContent.trim();
-    if (isDigit(string[string.length-1])===true) {
+    if (isDigit(string[string.length-1])===true ) {
         disp.textContent = disp.textContent.slice(0, -3);
     } 
     else  disp.textContent = disp.textContent.slice(0, -1);  
@@ -25,7 +24,8 @@ btn.addEventListener('click',e =>{
      
     if (isDigit(lastChar) == true){
         matrix = disp.textContent.split(' ');
-        if(matrix.length == 3){
+
+        if(matrix.length == 3 ){
             console.log(disp.textContent);
             if (lastChar == '=') {
                 disp.textContent = doMath(disp.textContent)
@@ -50,17 +50,19 @@ function doMath(string){
    let matrix = string.split(' ');
     switch (matrix[1]){
         case '+':
-            console.log(Number(matrix[0]) + Number(matrix[2]));
-            return Number(matrix[0]) + Number(matrix[2]);
-        case '-':
-            console.log(Number(matrix[0]) - Number(matrix[2]));
+            return  Number(matrix[0]) + Number(matrix[2]);
+        case '-': 
             return Number(matrix[0]) - Number(matrix[2]);
         case '*':
-            console.log(Number(matrix[0]) * Number(matrix[2]));
             return Number(matrix[0]) * Number(matrix[2]);
         case '/':
-            console.log(Number(matrix[0]) / Number(matrix[2]));
+            if( Number(matrix[2]) != 0) {
             return Number(matrix[0]) / Number(matrix[2]);
+            }
+            else return "ERROR";
+        case '=':
+            console.log(matrix[0]);
+            return Number(matrix[0]);
     }
 
 }
